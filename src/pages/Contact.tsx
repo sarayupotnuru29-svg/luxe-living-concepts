@@ -3,16 +3,24 @@ import SectionHeading from "@/components/SectionHeading";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
 import { Instagram, Mail, MapPin, Phone } from "lucide-react";
 
+const serviceOptions = [
+  "Budget Friendly Home Interiors",
+  "Turn Key Projects",
+  "Commercial Interiors",
+  "Premium Interiors",
+  "Luxury Interiors",
+];
+
 const Contact = () => {
   const form = useScrollReveal();
   const addresses = useScrollReveal();
-  const [formData, setFormData] = useState({ name: "", email: "", phone: "", message: "" });
+  const [formData, setFormData] = useState({ name: "", email: "", phone: "", service: "", message: "" });
   const [submitted, setSubmitted] = useState(false);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setSubmitted(true);
-    setFormData({ name: "", email: "", phone: "", message: "" });
+    setFormData({ name: "", email: "", phone: "", service: "", message: "" });
     setTimeout(() => setSubmitted(false), 4000);
   };
 
@@ -63,6 +71,23 @@ const Contact = () => {
                     />
                   </div>
                 ))}
+                {/* Service dropdown */}
+                <div>
+                  <label className="font-body text-xs tracking-[0.15em] uppercase text-muted-foreground mb-2 block">
+                    Service Interested In
+                  </label>
+                  <select
+                    required
+                    value={formData.service}
+                    onChange={(e) => setFormData({ ...formData, service: e.target.value })}
+                    className="w-full bg-transparent border-b border-border py-3 font-body text-sm text-foreground focus:border-primary focus:outline-none transition-colors appearance-none cursor-pointer"
+                  >
+                    <option value="" disabled>Select a service</option>
+                    {serviceOptions.map((s) => (
+                      <option key={s} value={s}>{s}</option>
+                    ))}
+                  </select>
+                </div>
                 <div>
                   <label className="font-body text-xs tracking-[0.15em] uppercase text-muted-foreground mb-2 block">
                     Your Message
@@ -99,7 +124,7 @@ const Contact = () => {
                 <div>
                   <div className="flex items-center gap-3 mb-2">
                     <Mail size={16} className="text-primary" />
-                    <span className="font-body text-sm font-medium text-foreground">Email</span>
+                    <span className="font-body text-sm font-medium text-foreground">Address</span>
                   </div>
                   <a href="mailto:luxelivingconcepts2299@gmail.com" className="font-body text-sm text-muted-foreground hover:text-primary transition-colors break-all">
                     luxelivingconcepts2299@gmail.com
@@ -140,20 +165,6 @@ const Contact = () => {
             </div>
           </div>
         </div>
-      </section>
-
-      {/* Map */}
-      <section className="h-[400px] w-full">
-        <iframe
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d243647.3170753!2d78.24323005!3d17.4123487!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcb99daeaebd2c7%3A0xae93b78392bafbc2!2sHyderabad%2C%20Telangana!5e0!3m2!1sen!2sin!4v1710000000000!5m2!1sen!2sin"
-          width="100%"
-          height="100%"
-          style={{ border: 0 }}
-          allowFullScreen
-          loading="lazy"
-          referrerPolicy="no-referrer-when-downgrade"
-          title="Luxe Living Concepts Location"
-        />
       </section>
     </main>
   );

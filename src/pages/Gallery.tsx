@@ -2,6 +2,7 @@ import { useState } from "react";
 import SectionHeading from "@/components/SectionHeading";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
 import { X } from "lucide-react";
+import galleryBg from "@/assets/gallery-bg.jpg";
 
 // Import real images
 import p1 from "@/assets/images/projects/project-1.jpg";
@@ -33,14 +34,13 @@ const Gallery = () => {
   return (
     <main className="pt-20">
       {/* Hero */}
-      <section className="relative h-[40vh] flex items-center justify-center bg-accent">
+      <section className="relative h-[40vh] flex items-center justify-center overflow-hidden">
+        <img src={galleryBg} alt="Gallery backdrop" className="absolute inset-0 w-full h-full object-cover" />
+        <div className="absolute inset-0 luxe-overlay" />
         <div className="relative z-10 text-center">
           <h1 className="font-heading text-4xl md:text-6xl text-luxe-cream tracking-[0.15em]" style={{ lineHeight: "1.1" }}>
             Our Projects
           </h1>
-          <p className="font-body text-sm tracking-[0.2em] uppercase text-luxe-cream/60 mt-4">
-            78 Completed Designs
-          </p>
         </div>
       </section>
 
