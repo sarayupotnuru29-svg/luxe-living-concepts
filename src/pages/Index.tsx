@@ -49,23 +49,8 @@ const Index = () => {
         />
         <div className="absolute inset-0 luxe-overlay" />
         <div className="relative z-10 text-center px-6 max-w-3xl">
-          <h1
-            className={`font-heading text-4xl md:text-7xl text-luxe-cream tracking-[0.15em] mb-4 transition-all duration-1000 ${
-              heroLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-            }`}
-            style={{ lineHeight: "1.1" }}
-          >
-            Luxe Living Concepts
-          </h1>
-          <p
-            className={`font-body text-sm md:text-lg tracking-[0.3em] uppercase text-luxe-cream/80 mb-6 transition-all duration-1000 delay-300 ${
-              heroLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
-            }`}
-          >
-            Homes and Interiors
-          </p>
           <div
-            className={`w-16 h-px bg-luxe-cream/50 mx-auto mb-6 transition-all duration-1000 delay-500 ${
+            className={`w-16 h-px bg-luxe-cream/50 mx-auto mb-6 transition-all duration-1000 delay-300 ${
               heroLoaded ? "opacity-100 w-16" : "opacity-0 w-0"
             }`}
           />

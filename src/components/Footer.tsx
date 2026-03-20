@@ -11,7 +11,7 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12">
           {/* Brand */}
           <div className="md:col-span-1">
-            <img src={logo} alt="Luxe Living Concepts" className="h-20 w-auto mb-4 brightness-150" />
+            <img src={logo} alt="Luxe Living Concepts" className="h-24 w-auto mb-4 brightness-[1.8] contrast-125" />
             <p className="text-sm font-body opacity-80 leading-relaxed">
               We design your dream home with precision, luxury, and warmth.
             </p>
@@ -29,7 +29,11 @@ const Footer = () => {
                 { to: "/contact", label: "Contact" },
               ].map((l) => (
                 <li key={l.to}>
-                  <Link to={l.to} className="hover:opacity-100 transition-opacity duration-300">
+                  <Link
+                    to={l.to}
+                    onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+                    className="hover:opacity-100 transition-opacity duration-300"
+                  >
                     {l.label}
                   </Link>
                 </li>
@@ -41,11 +45,23 @@ const Footer = () => {
           <div>
             <h4 className="font-heading text-lg mb-6 tracking-wider">Services</h4>
             <ul className="space-y-3 font-body text-sm opacity-80">
-              <li>Budget Friendly Interiors</li>
-              <li>Turn Key Projects</li>
-              <li>Commercial Interiors</li>
-              <li>Premium Interiors</li>
-              <li>Luxury Interiors</li>
+              {[
+                "Budget Friendly Interiors",
+                "Turn Key Projects",
+                "Commercial Interiors",
+                "Premium Interiors",
+                "Luxury Interiors",
+              ].map((s) => (
+                <li key={s}>
+                  <Link
+                    to="/services"
+                    onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+                    className="hover:opacity-100 transition-opacity duration-300"
+                  >
+                    {s}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
 
