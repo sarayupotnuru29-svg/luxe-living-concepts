@@ -94,34 +94,16 @@ const Footer = () => {
         </div>
 
         {/* Bottom Bar */}
-        <div className="border-t border-primary/30 mt-12 pt-8 flex flex-col md:grid md:grid-cols-3 items-center justify-between gap-6">
+        <div className="border-t border-primary/30 mt-12 pt-8 flex flex-col md:flex-row items-center justify-between gap-6">
           {/* Copyright */}
-          <p className="font-body text-xs opacity-60 tracking-wider md:justify-self-start">
+          <p className="font-body text-xs opacity-60 tracking-wider">
             © {new Date().getFullYear()} Luxe Living Concepts. All rights reserved.
           </p>
-
-          {/* StaffArc Attribution */}
-          <div className="flex justify-center items-center gap-1 font-body text-xs opacity-90">
-            Made with <Heart className="inline h-3 w-3 text-red-500 mx-1 fill-red-500" /> by
-            <a
-              href="https://staffarc.in"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-1 text-[#f37021] hover:underline font-semibold transition-all"
-            >
-              <img
-                src="https://www.staffarc.in/images/Staffarc-logo.png"
-                alt="StaffArc logo"
-                className="h-4 w-4 object-contain"
-              />
-              StaffArc
-            </a>
-          </div>
 
           {/* Scroll to Top */}
           <button
             onClick={scrollToTop}
-            className="flex items-center gap-2 text-xs tracking-[0.15em] uppercase font-body opacity-80 hover:opacity-100 transition-all duration-300 group md:justify-self-end"
+            className="flex items-center gap-2 text-xs tracking-[0.15em] uppercase font-body opacity-80 hover:opacity-100 transition-all duration-300 group"
           >
             Back to top
             <ArrowUp size={16} className="group-hover:-translate-y-1 transition-transform duration-300" />
