@@ -5,23 +5,44 @@ import { X } from "lucide-react";
 import galleryBg from "@/assets/gallery-bg.jpg";
 
 /**
- * We programmatically generate the image list.
- * This assumes the files are named 1.jpeg through 78.jpeg 
- * in the src/assets/images/projects/ folder.
+ * Helper to generate image paths for each category.
+ * It maps the names and counts provided to local asset paths.
  */
-const allImages = Array.from({ length: 78 }, (_, i) => {
-  const id = i + 1;
-  return {
-    // Using new URL for Vite/Webpack compatibility to dynamic import by path
-    src: new URL(`../assets/images/projects/${id}.jpeg`, import.meta.url).href,
-    alt: `Luxe Living Interior Project ${id}`,
-    id: id,
-  };
-});
+const generateImages = (category: string, count: number, fileNameBase: string) => {
+  return Array.from({ length: count }, (_, i) => {
+    const id = i + 1;
+    return {
+      src: new URL(`../assets/${fileNameBase}${id}.jpeg`, import.meta.url).href,
+      alt: `${category} ${id}`,
+      category: category,
+    };
+  });
+};
+
+const projectSections = [
+  { title: "Main Entrance", images: generateImages("Main Entrance", 10, "maindoorentrence") },
+  { title: "Living Area", images: generateImages("Living Area", 14, "livingarea") },
+  { title: "TV Unit", images: generateImages("TV Unit", 13, "tvunit") },
+  { title: "Pooja Room", images: generateImages("Pooja Room", 10, "poojaroom") },
+  { title: "Modular Kitchen", images: generateImages("Modular Kitchen", 11, "modulerkitchen") },
+  { title: "Crockery Unit", images: generateImages("Crockery Unit", 9, "Crockery") },
+  { title: "Dining", images: generateImages("Dining", 15, "dinning") },
+  { title: "Bedroom", images: generateImages("Bedroom", 16, "bedroom") },
+  { title: "Wardrobe", images: generateImages("Wardrobe", 17, "wadrob") },
+  { title: "Vanity", images: generateImages("Vanity", 10, "Vanity") },
+];
+
+// Flatten all images for the lightbox indexing
+const allImages = projectSections.flatMap((section) => section.images);
 
 const Gallery = () => {
   const [lightbox, setLightbox] = useState<number | null>(null);
-  const grid = useScrollReveal(0.1);
+  const reveal = useScrollReveal(0.1);
+
+  const openLightbox = (imgSrc: string) => {
+    const index = allImages.findIndex((img) => img.src === imgSrc);
+    setLightbox(index);
+  };
 
   return (
     <main className="pt-20">
@@ -34,52 +55,47 @@ const Gallery = () => {
         />
         <div className="absolute inset-0 luxe-overlay" />
         <div className="relative z-10 text-center">
-          <h1 
-            className="font-heading text-4xl md:text-6xl text-luxe-cream tracking-[0.15em]" 
-            style={{ lineHeight: "1.1" }}
-          >
+          <h1 className="font-heading text-4xl md:text-6xl text-luxe-cream tracking-[0.15em]" style={{ lineHeight: "1.1" }}>
             Our Projects
           </h1>
         </div>
       </section>
 
-      {/* Gallery Grid */}
+      {/* Gallery Sections */}
       <section className="luxe-section bg-luxe-cream">
         <div className="container mx-auto">
-          <SectionHeading 
-            title="Project Gallery" 
-            subtitle="Every space has a story — here are ours" 
-          />
-          
-          <div
-            ref={grid.ref}
-            className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 md:gap-4"
-          >
-            {allImages.map((img, i) => (
-              <div
-                key={img.id}
-                className={`gallery-item aspect-square cursor-pointer transition-all duration-700 ${
-                  grid.isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
-                }`}
-                style={{ transitionDelay: `${Math.min(i * 20, 500)}ms` }}
-                onClick={() => setLightbox(i)}
-              >
-                <img 
-                  src={img.src} 
-                  alt={img.alt} 
-                  loading="lazy" 
-                  className="w-full h-full object-cover hover:scale-110 transition-transform duration-500"
-                />
+          {projectSections.map((section, sectionIdx) => (
+            <div key={section.title} className={sectionIdx !== 0 ? "mt-20" : ""}>
+              <SectionHeading 
+                title={section.title} 
+                subtitle={`Exquisite designs for your ${section.title.toLowerCase()}`} 
+              />
+              
+              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 md:gap-4">
+                {section.images.map((img, i) => (
+                  <div
+                    key={`${section.title}-${i}`}
+                    className="gallery-item aspect-square cursor-pointer overflow-hidden rounded-sm group"
+                    onClick={() => openLightbox(img.src)}
+                  >
+                    <img 
+                      src={img.src} 
+                      alt={img.alt} 
+                      loading="lazy" 
+                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-in-out"
+                    />
+                  </div>
+                ))}
               </div>
-            ))}
-          </div>
+            </div>
+          ))}
         </div>
       </section>
 
       {/* Lightbox / Image Preview */}
       {lightbox !== null && (
         <div
-          className="fixed inset-0 z-50 bg-accent/95 flex items-center justify-center p-4 animate-fade-in backdrop-blur-sm"
+          className="fixed inset-0 z-50 bg-accent/98 flex items-center justify-center p-4 animate-fade-in backdrop-blur-md"
           onClick={() => setLightbox(null)}
         >
           <button
@@ -89,16 +105,21 @@ const Gallery = () => {
             <X size={32} />
           </button>
           
-          <div className="relative max-w-5xl w-full flex items-center justify-center">
+          <div className="relative max-w-5xl w-full flex flex-col items-center justify-center">
             <img
               src={allImages[lightbox].src}
               alt={allImages[lightbox].alt}
-              className="max-w-full max-h-[90vh] object-contain rounded-sm shadow-2xl"
+              className="max-w-full max-h-[85vh] object-contain rounded-sm shadow-2xl"
               onClick={(e) => e.stopPropagation()}
             />
-            <p className="absolute -bottom-8 left-0 text-luxe-cream/60 font-body text-sm">
-              Project {allImages[lightbox].id} of 78
-            </p>
+            <div className="mt-6 text-center">
+              <p className="text-luxe-cream font-heading text-lg tracking-widest uppercase">
+                {allImages[lightbox].category}
+              </p>
+              <p className="text-luxe-cream/50 font-body text-xs mt-1">
+                Image {lightbox + 1} of {allImages.length}
+              </p>
+            </div>
           </div>
         </div>
       )}

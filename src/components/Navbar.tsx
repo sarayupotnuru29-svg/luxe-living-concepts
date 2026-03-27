@@ -19,13 +19,11 @@ const Navbar = () => {
     <nav className="fixed top-0 left-0 right-0 z-50 bg-luxe-cream/90 backdrop-blur-sm border-b border-border">
       <div className="container mx-auto flex items-center justify-between h-24 px-6">
         <Link to="/" className="flex items-center gap-3">
-          <img src={logo} alt="Luxe Living Concepts" className="h-20 w-auto" />
-          <div className="flex flex-col">
-            <span className="font-heading text-xl tracking-[0.1em] text-foreground" style={{ lineHeight: "1.1" }}>
-              Luxe Living
-            </span>
-            <span className="font-heading text-xl tracking-[0.1em] text-foreground" style={{ lineHeight: "1.1" }}>
-              Concepts
+          <img src={logo} alt="Luxe Living Concepts" className="h-14 md:h-16 w-auto" />
+          <div className="whitespace-nowrap">
+            {/* Reduced text size: text-base for mobile, text-lg for desktop */}
+            <span className="font-heading text-base md:text-lg tracking-[0.12em] text-foreground uppercase">
+              Luxe Living Concepts
             </span>
           </div>
         </Link>

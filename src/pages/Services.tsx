@@ -12,28 +12,28 @@ import { Link } from "react-router-dom";
 const services = [
   {
     title: "Budget Friendly Home Interiors",
-    desc: "Thoughtfully designed spaces that maximize style and functionality within your budget. We source smart materials and innovative layouts to deliver premium aesthetics at accessible pricing.",
+    desc: "Smart, stylish, and functional designs that respect your investment. We utilize value-engineered materials and creative layouts to deliver a high-end look without the premium price tag.",
     image: serviceBudget,
   },
   {
-    title: "Turn Key Projects",
-    desc: "From bare walls to a fully furnished home — we handle architecture, interiors, furnishing, and handover. One point of contact, zero stress.",
-    image: serviceTurnkey,
-  },
-  {
-    title: "Commercial Interiors",
-    desc: "Office spaces, retail showrooms, hospitality venues — designed to elevate your brand, enhance productivity, and leave lasting impressions.",
-    image: serviceCommercial,
-  },
-  {
     title: "Premium Interiors",
-    desc: "Curated materials, bespoke furniture, and refined detailing for homeowners who value craftsmanship and distinction in every corner.",
+    desc: "Elevated living through curated materials and bespoke craftsmanship. Designed for those who appreciate refined detailing, custom furniture, and a sophisticated aesthetic in every room.",
     image: servicePremium,
   },
   {
     title: "Luxury Interiors",
-    desc: "The pinnacle of residential design. Rare marble, exotic veneers, master artisans, and a design language that speaks timeless opulence.",
+    desc: "The ultimate expression of residential grandeur. From rare marbles to exotic veneers, we collaborate with master artisans to create timeless spaces of unparalleled opulence and prestige.",
     image: serviceLuxury,
+  },
+  {
+    title: "Turn Key Projects",
+    desc: "A seamless transition from blueprint to beautiful. We manage the entire lifecycle — architecture, interior construction, and final styling — providing you with a stress-free, move-in-ready experience.",
+    image: serviceTurnkey,
+  },
+  {
+    title: "Commercial Interiors",
+    desc: "Strategic design solutions for high-performance workplaces, retail hubs, and hospitality venues. We craft environments that reflect your brand identity while inspiring productivity and growth.",
+    image: serviceCommercial,
   },
 ];
 
