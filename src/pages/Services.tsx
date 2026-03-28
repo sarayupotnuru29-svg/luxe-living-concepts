@@ -112,7 +112,7 @@
 //                     onClick={() => openGallery(s.gallery)}
 //                     className="w-fit flex items-center gap-3 bg-primary text-primary-foreground px-6 py-3 rounded-sm text-xs font-bold tracking-[0.2em] uppercase shadow-md hover:bg-primary/90 hover:gap-5 transition-all"
 //                   >
-//                     View More <ArrowRight size={16} />
+//                     Read More <ArrowRight size={16} />
 //                   </button>
 //                 </div>
 //               </div>
@@ -187,7 +187,7 @@
 //               </div>
 //               <span className="text-white/60 text-xs tracking-[0.3em] uppercase">
 //                 {currentIndex + 1} / {activeGallery.length}
-//               </span>
+//               </span >
 //             </div>
 //           </div>
 //         </div>
@@ -257,9 +257,6 @@
 
 
 
-
-
-
 import { useState } from "react";
 import servicesBg from "@/assets/services-bg.jpg";
 import serviceBudget from "@/assets/service-budget.jpg";
@@ -284,7 +281,7 @@ const generateGallery = (count: number, fileNameBase: string) => {
 const services = [
   {
     title: "Budget Friendly Home Interiors",
-    desc: "Premium laminates, customized designs as per your space. Excellence meets economy. We specialize in value-driven design that utilizes smart materials and space-optimized layouts to create beautiful, functional homes without the luxury price tag. Perfect for first-time homeowners seeking style with financial mindfulness.",
+    desc: "2BHK: 2 wardrobes + dressing, 1 tv unit, modular kitchen with no glass door profile, crockery unit with 1 glass door, shoe rack, ceiling plan (light and electrical excluded). 3BHK: Same as 2BHK offers but 3 wardrobes + dressing. Excellence meets economy. We specialize in value-driven design that utilizes smart materials and space-optimized layouts to create beautiful, functional homes without the luxury price tag.",
     image: serviceBudget,
     gallery: generateGallery(7, "budget"),
   },
@@ -296,7 +293,7 @@ const services = [
   },
   {
     title: "Luxury Interiors",
-    desc: "The zenith of interior artistry. We bring together master artisans, exotic materials like rare marbles and veneers, and avant-garde design concepts. These spaces are crafted to be timeless masterpieces of opulence, prestige, and unparalleled elegance.",
+    desc: "Premium laminates, customized designs as per your space. The zenith of interior artistry. We bring together master artisans, exotic materials like rare marbles and veneers, and avant-garde design concepts. These spaces are crafted to be timeless masterpieces of opulence, prestige, and unparalleled elegance.",
     image: serviceLuxury,
     gallery: generateGallery(9, "Luxury"),
   },
@@ -368,7 +365,9 @@ const Services = () => {
                 </div>
                 <div className="flex-1 p-8 md:p-10 flex flex-col justify-center">
                   <h3 className="font-heading text-2xl md:text-3xl mb-4 text-foreground tracking-tight">{s.title}</h3>
-                  <p className="font-body text-base text-muted-foreground leading-relaxed mb-6">{s.desc}</p>
+                  <p className="font-body text-base text-muted-foreground leading-relaxed mb-6">
+                    {s.desc}
+                  </p>
                   
                   <button 
                     onClick={() => openGallery(s.gallery)}
