@@ -5,6 +5,7 @@
 // import serviceCommercial from "@/assets/service-commercial.jpg";
 // import servicePremium from "@/assets/service-premium.jpg";
 // import serviceLuxury from "@/assets/service-luxury.jpg";
+// import processImg from "@/assets/process.jpeg";
 // import SectionHeading from "@/components/SectionHeading";
 // import { useScrollReveal } from "@/hooks/useScrollReveal";
 // import { ArrowRight, Clock, MapPin, Phone, X, ChevronLeft, ChevronRight } from "lucide-react";
@@ -53,6 +54,7 @@
 
 // const Services = () => {
 //   const cards = useScrollReveal();
+//   const processReveal = useScrollReveal();
 //   const info = useScrollReveal();
   
 //   const [activeGallery, setActiveGallery] = useState<string[] | null>(null);
@@ -110,11 +112,35 @@
 //                     onClick={() => openGallery(s.gallery)}
 //                     className="w-fit flex items-center gap-3 bg-primary text-primary-foreground px-6 py-3 rounded-sm text-xs font-bold tracking-[0.2em] uppercase shadow-md hover:bg-primary/90 hover:gap-5 transition-all"
 //                   >
-//                     Read More <ArrowRight size={16} />
+//                     View More <ArrowRight size={16} />
 //                   </button>
 //                 </div>
 //               </div>
 //             ))}
+//           </div>
+//         </div>
+//       </section>
+
+//       {/* Design Process Section */}
+//       <section className="luxe-section bg-white border-t border-luxe-cream/20">
+//         <div className="container mx-auto max-w-6xl">
+//           <SectionHeading 
+//             title="Our Design Process" 
+//             subtitle="From the first sketch to the final reveal" 
+//           />
+//           <div 
+//             ref={processReveal.ref}
+//             className={`transition-all duration-1000 ease-out flex justify-center ${
+//               processReveal.isVisible ? "opacity-100 scale-100" : "opacity-0 scale-95"
+//             }`}
+//           >
+//             <div className="w-full rounded-lg overflow-hidden shadow-2xl border border-luxe-cream/30">
+//               <img 
+//                 src={processImg} 
+//                 alt="Our detailed design and execution process" 
+//                 className="w-full h-auto object-contain md:object-cover"
+//               />
+//             </div>
 //           </div>
 //         </div>
 //       </section>
@@ -161,7 +187,7 @@
 //               </div>
 //               <span className="text-white/60 text-xs tracking-[0.3em] uppercase">
 //                 {currentIndex + 1} / {activeGallery.length}
-//               </span >
+//               </span>
 //             </div>
 //           </div>
 //         </div>
@@ -258,13 +284,13 @@ const generateGallery = (count: number, fileNameBase: string) => {
 const services = [
   {
     title: "Budget Friendly Home Interiors",
-    desc: "Excellence meets economy. We specialize in value-driven design that utilizes smart materials and space-optimized layouts to create beautiful, functional homes without the luxury price tag. Perfect for first-time homeowners seeking style with financial mindfulness.",
+    desc: "Premium laminates, customized designs as per your space. Excellence meets economy. We specialize in value-driven design that utilizes smart materials and space-optimized layouts to create beautiful, functional homes without the luxury price tag. Perfect for first-time homeowners seeking style with financial mindfulness.",
     image: serviceBudget,
     gallery: generateGallery(7, "budget"),
   },
   {
     title: "Premium Interiors",
-    desc: "A step beyond the ordinary. Our premium service focuses on bespoke craftsmanship, superior finishes, and curated color palettes. We balance modern aesthetics with comfort to design spaces that feel personalized, refined, and distinctly high-end.",
+    desc: "Premium laminates, customized designs as per your space. A step beyond the ordinary. Our premium service focuses on bespoke craftsmanship, superior finishes, and curated color palettes. We balance modern aesthetics with comfort to design spaces that feel personalized, refined, and distinctly high-end.",
     image: servicePremium,
     gallery: generateGallery(9, "premium"),
   },
@@ -348,7 +374,7 @@ const Services = () => {
                     onClick={() => openGallery(s.gallery)}
                     className="w-fit flex items-center gap-3 bg-primary text-primary-foreground px-6 py-3 rounded-sm text-xs font-bold tracking-[0.2em] uppercase shadow-md hover:bg-primary/90 hover:gap-5 transition-all"
                   >
-                    Read More <ArrowRight size={16} />
+                    View More <ArrowRight size={16} />
                   </button>
                 </div>
               </div>
@@ -423,7 +449,7 @@ const Services = () => {
               </div>
               <span className="text-white/60 text-xs tracking-[0.3em] uppercase">
                 {currentIndex + 1} / {activeGallery.length}
-              </span >
+              </span>
             </div>
           </div>
         </div>
